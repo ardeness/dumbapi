@@ -1,0 +1,15 @@
+FROM golang
+COPY dummapi.go /build/dummapi.go
+COPY Makefile /build/Makefile
+WORKDIR /build/
+RUN make
+#RUN export GOPATH=`pwd`
+#RUN go get github.com/gorilla/mux
+#RUN go get github.com/go-redis/redis
+#RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s" -a -installsuffix cgo -o dummapi dummapi.go
+RUN mv dummapi /
+RUN cd /
+RUN rm -rf build/
+
+CMD ["/dummapi"]
+EXPOSE 10000

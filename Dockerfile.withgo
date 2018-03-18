@@ -1,0 +1,4 @@
+From scratch
+COPY dummapi /
+CMD ["/dummapi"]
+EXPOSE 10000
